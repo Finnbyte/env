@@ -34,7 +34,7 @@ enabled=true
 [widgetsboxmodel]
 alwaysOnTop=true
 clearOnHide=false
-clientShadow=true
+clientShadow=false
 darkTheme=Default Dark
 displayScrollbar=false
 followCursor=true
@@ -44,4 +44,4 @@ itemCount=5
 lightTheme=Default Dark
 quitOnClose=false
 showCentered=true
-systemShadow=true
+systemShadow=false
