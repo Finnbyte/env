@@ -475,29 +475,11 @@ awful.rules.rules = {
         properties = { floating = true }
     },
 
-    -- Add overriding
-    {
-        rule_any = {
-            class = {
-                "firefox",
-                "chromium",
-                "discord"
-            }
-
-        },
-        properties = { opacity = 1, maximized = false, floating = false }
-    },
-
-    -- Add titlebars to normal clients and dialogs
-    {
-        rule_any = { type = { "normal", "dialog" }
-        },
-        properties = { titlebars_enabled = true }
-    },
-
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    {
+        rule = { class = "discord" },
+        properties = { screen = 2, tag = "1" }
+    },
 }
 -- }}}
 
