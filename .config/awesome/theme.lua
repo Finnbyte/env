@@ -18,7 +18,7 @@ local font_name                                 = "Source Code Pro"
 local theme                                     = {}
 theme.default_dir                               = require("awful.util").get_themes_dir() .. "default"
 theme.dir                                       = gears.filesystem.get_configuration_dir() .. "themes/rainbow"
-theme.wallpaper                                 = os.getenv("WALLPAPERS_DIR") .. "/nature/nature1.png"
+theme.wallpaper                                 = os.getenv("WALLPAPERS_DIR") .. "/misc/moon1.png"
 theme.font                                      = font_name .. " 11"
 theme.fg_normal                                 = "#9E9E9E"
 theme.fg_focus                                  = "#EBEBFF"
@@ -40,10 +40,10 @@ theme.tasklist_floating                         = theme.ocol .. "[F]</span>"
 theme.tasklist_maximized_horizontal             = theme.ocol .. "[M] </span>"
 theme.tasklist_maximized_vertical               = ""
 theme.tasklist_disable_icon                     = true
-theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
-theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
-theme.taglist_squares_sel                       = theme.dir .. "/icons/square_sel.png"
-theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel.png"
+-- theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
+-- theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
+-- theme.taglist_squares_sel                       = theme.dir .. "/icons/square_sel.png"
+-- theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel.png"
 theme.useless_gap                               = dpi(6)
 theme.layout_txt_tile                           = "[t]"
 theme.layout_txt_tileleft                       = "[l]"
@@ -97,17 +97,17 @@ local myawesomemenu                             = {
     { "quit",        function() awesome.quit() end },
 }
 
-local mymainmenu                                = awful.menu({
-    items = { { "awesome", myawesomemenu, theme.awesome_icon },
-        { "open terminal", terminal }
-    }
-})
-
-local mylauncher                                = awful.widget.launcher({
-    image = theme.awesome_icon,
-    menu = mymainmenu
-})
-
+-- local mymainmenu                                = awful.menu({
+--     items = { { "awesome", myawesomemenu, theme.awesome_icon },
+--         { "open terminal", terminal }
+--     }
+-- })
+--
+-- local mylauncher                                = awful.widget.launcher({
+--     -- image = theme.awesome_icon,
+--     menu = mymainmenu
+-- })
+--
 -- Textclock
 local mytextclock                               = wibox.widget.textclock(markup(white, " %a %d %B %H:%M"))
 mytextclock.font                                = theme.font
@@ -325,7 +325,7 @@ function theme.at_screen_connect(s)
             net.widget,
             theme.weather,
             mytextclock,
-            mylauncher,
+            -- mylauncher,
         },
     }
 end

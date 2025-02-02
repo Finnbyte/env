@@ -43,15 +43,12 @@ end
 -- }}}
 
 config_dir_path = gears.filesystem.get_xdg_config_home() .. "awesome/"
-themes_dir_path = config_dir_path .. "themes/"
 modkey = "Mod4"
-terminal = "st"
+terminal = os.getenv("TERMINAL") or "xterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-theme_name = "rainbow"
 
--- beautiful.init(themes_dir_path .. theme_name .. "/theme.lua")
-beautiful.init(themes_dir_path .. theme_name .. "/theme.lua")
+beautiful.init(config_dir_path .. "theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 
@@ -240,9 +237,9 @@ globalkeys = gears.table.join(
         { description = "swap with next client by index", group = "client" }),
     awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
         { description = "swap with previous client by index", group = "client" }),
-    awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
+    awful.key({ modkey }, ".", function() awful.screen.focus_relative(1) end,
         { description = "focus the next screen", group = "screen" }),
-    awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
+    awful.key({ modkey }, ",", function() awful.screen.focus_relative(-1) end,
         { description = "focus the previous screen", group = "screen" }),
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
         { description = "jump to urgent client", group = "client" }),
@@ -320,7 +317,9 @@ clientkeys = gears.table.join(
         { description = "toggle floating", group = "client" }),
     awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
         { description = "move to master", group = "client" }),
-    awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
+    awful.key({ modkey, "Shift" }, ".", function(c) c:move_to_screen(c.screen.index + 1) end,
+        { description = "move to screen", group = "client" }),
+    awful.key({ modkey, "Shift" }, ",", function(c) c:move_to_screen(c.screen.index + 1) end,
         { description = "move to screen", group = "client" }),
     awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
         { description = "toggle keep on top", group = "client" }),
