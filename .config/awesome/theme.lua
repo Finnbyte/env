@@ -81,7 +81,7 @@ local myawesomemenu                 = {
 -- })
 --
 -- Textclock
-local mytextclock                   = wibox.widget.textclock(markup(white, " %a %d %B %H:%M"))
+local mytextclock                   = wibox.widget.textclock(markup(white, " %H:%M - %a, %d %b %Y"))
 mytextclock.font                    = theme.font
 
 -- Calendar
