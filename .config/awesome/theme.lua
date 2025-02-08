@@ -180,6 +180,7 @@ theme.fs = lain.widget.fs({
 local bat = lain.widget.bat({
     settings = function()
         local perc = bat_now.perc
+        if bat_now.ac_status == "N/A" then return end -- Hide if N/A status meaning not a laptop
         if bat_now.ac_status == 1 then perc = perc .. " Plug" end
         widget:set_markup(markup.font(theme.font, markup(gray, " BAT ") .. perc .. " "))
     end
@@ -270,9 +271,10 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused)
 
     -- Create the wibox and add widgets to it
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(25), bg = theme.bg_normal, fg = theme.fg_normal })
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             first,
@@ -282,21 +284,25 @@ function theme.at_screen_connect(s)
             spr,
             s.mypromptbox,
             spr,
+            s.mytasklist, -- Middle widget
         },
-        s.mytasklist, -- Middle widget
-        {             -- Right widgets
+        {
+            layout = wibox.layout.fixed.horizontal,
+            max_widget_size = 1500,
+            mytextclock,
+        },
+        { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             spr,
             -- theme.mpd.widget,
             --theme.mail.widget,
             --theme.fs.widget,
-            cpu.widget,
-            mem.widget,
-            bat.widget,
-            net.widget,
-            theme.weather,
-            mytextclock,
+            -- cpu.widget,
+            -- mem.widget,
+            -- bat.widget,
+            -- net.widget,
+            -- theme.weather,
             -- mylauncher,
         },
     }
